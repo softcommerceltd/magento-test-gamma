@@ -2,7 +2,7 @@
     "name": "softcommerce/module-gamma",
     "description": "Comprehensive analytics and reporting module for Magento 2. Delivers real-time dashboards, scheduled report generation, data export in multiple formats (CSV, PDF, Excel), and integration with external BI tools via REST API.",
     "type": "magento2-module",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "license": "proprietary",
     "homepage": "https://softcommerce.co.uk/module-gamma",
     "keywords": [
