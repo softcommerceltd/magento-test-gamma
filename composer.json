@@ -1,9 +1,105 @@
 {
     "name": "softcommerce/module-gamma",
-    "description": "SoftCommerce Module Gamma - test module for Cargoman",
+    "description": "Comprehensive analytics and reporting module for Magento 2. Delivers real-time dashboards, scheduled report generation, data export in multiple formats (CSV, PDF, Excel), and integration with external BI tools via REST API.",
     "type": "magento2-module",
     "version": "1.2.0",
-    "license": "OSL-3.0",
+    "license": "proprietary",
+    "homepage": "https://softcommerce.co.uk/module-gamma",
+    "keywords": [
+        "magento2",
+        "analytics",
+        "reporting",
+        "dashboard",
+        "business-intelligence",
+        "data-export",
+        "csv",
+        "pdf",
+        "ecommerce",
+        "kpi"
+    ],
+    "authors": [
+        {
+            "name": "Serhiy Kogut",
+            "email": "serhiy@softcommerce.co.uk",
+            "homepage": "https://softcommerce.co.uk",
+            "role": "Lead Developer"
+        },
+        {
+            "name": "Jane Doe",
+            "email": "jane@softcommerce.co.uk",
+            "role": "Data Engineer"
+        },
+        {
+            "name": "SoftCommerce Ltd",
+            "homepage": "https://softcommerce.co.uk"
+        }
+    ],
+    "support": {
+        "email": "support@softcommerce.co.uk",
+        "issues": "https://github.com/softcommerce/module-gamma/issues",
+        "docs": "https://docs.softcommerce.co.uk/module-gamma",
+        "source": "https://github.com/softcommerce/module-gamma",
+        "wiki": "https://wiki.softcommerce.co.uk/module-gamma",
+        "rss": "https://softcommerce.co.uk/feed/module-gamma"
+    },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/softcommerce"
+        },
+        {
+            "type": "custom",
+            "url": "https://softcommerce.co.uk/donate"
+        }
+    ],
+    "require": {
+        "php": "~8.1.0||~8.2.0||~8.3.0||~8.4.0",
+        "magento/framework": ">=103.0.0",
+        "magento/module-backend": ">=102.0.0",
+        "magento/module-reports": ">=100.4.0",
+        "magento/module-catalog": ">=104.0.0",
+        "magento/module-sales": ">=103.0.0",
+        "magento/module-customer": ">=103.0.0",
+        "magento/module-ui": ">=101.2.0",
+        "magento/module-cron": ">=100.4.0",
+        "phpoffice/phpspreadsheet": "^1.29||^2.0",
+        "dompdf/dompdf": "^2.0",
+        "ext-json": "*",
+        "ext-gd": "*",
+        "ext-zip": "*",
+        "ext-intl": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "phpstan/phpstan": "^1.10",
+        "squizlabs/php_codesniffer": "^3.7",
+        "magento/magento-coding-standard": "^33",
+        "fakerphp/faker": "^1.23",
+        "symfony/var-dumper": "^6.0||^7.0"
+    },
+    "suggest": {
+        "softcommerce/module-alpha": "Adds catalog-level analytics and product performance metrics",
+        "softcommerce/module-beta": "Adds order and fulfillment analytics with shipment tracking data",
+        "magento/module-google-analytics": "Send report events to Google Analytics",
+        "magento/module-new-relic-reporting": "Forward performance metrics to New Relic",
+        "elasticsearch/elasticsearch": "Enables aggregated search analytics and query insights"
+    },
+    "provide": {
+        "softcommerce/analytics-api": "1.2.0",
+        "softcommerce/reporting-api": "1.0.0",
+        "softcommerce/export-api": "1.0.0"
+    },
+    "conflict": {
+        "magento/module-reports": "<100.4.0",
+        "magento/module-analytics": "<100.4.0",
+        "mirasvit/module-reports": "<3.0.0"
+    },
+    "replace": {
+        "softcommerce/module-gamma-community": "1.2.0",
+        "softcommerce/module-simple-reports": "1.2.0"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "autoload": {
         "files": [
             "registration.php"
@@ -11,5 +107,28 @@
         "psr-4": {
             "SoftCommerce\\ModuleGamma\\": ""
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SoftCommerce\\ModuleGamma\\Test\\": "Test/"
+        }
+    },
+    "extra": {
+        "magento": {
+            "module": "SoftCommerce_ModuleGamma",
+            "sequence": [
+                "Magento_Backend",
+                "Magento_Reports",
+                "Magento_Catalog",
+                "Magento_Sales",
+                "Magento_Cron"
+            ]
+        },
+        "branch-alias": {
+            "dev-main": "1.2.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
     }
 }
